@@ -1,0 +1,11 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: lmhy-fisco-bcos
+config:
+  bcos:
+    host: 172.16.1.190
+    port: 30304
+    nodeId: NodeId
+    orgId: Mo
