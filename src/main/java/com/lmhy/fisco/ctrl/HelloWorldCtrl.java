@@ -1,6 +1,5 @@
 package com.lmhy.fisco.ctrl;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lmhy.fisco.contract.HelloWorld;
@@ -10,10 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.bcos.channel.client.TransactionSucCallback;
 import org.bcos.channel.dto.EthereumResponse;
-import org.bcos.web3j.abi.EventValues;
-import org.bcos.web3j.abi.datatypes.Address;
 import org.bcos.web3j.abi.datatypes.Utf8String;
-import org.bcos.web3j.abi.datatypes.generated.Uint256;
 import org.bcos.web3j.protocol.ObjectMapperFactory;
 import org.bcos.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -73,6 +69,11 @@ public class HelloWorldCtrl extends BaseCtrl {
                             String str = response._str.getValue();
                             log.info("[HelloWorld]event log: {}-{}-{}",address,code,str);
                         }
+                        log.info("-------------------------");
+                        /*Observable<HelloWorld.MsgEventResponse> ob = helloWorld.msgEventObservable(DefaultBlockParameterName.EARLIEST,
+                                DefaultBlockParameterName.LATEST);
+                        ob.subscribe(name -> log.info("event log -->{}",name));
+                        log.info("{}",ob);*/
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
